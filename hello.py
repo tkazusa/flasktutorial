@@ -1,22 +1,10 @@
-from flask import Flask
+from flask import Flask, render_template
 app = Flask(__name__)
 
 
-@app.route('/')
-def hello_world():
-    return '''
-        <!DOCTYPE html>
-        <html>
-          <head>
-            <meta charset="utf-8"/>
-            <link rel="stylesheet" href="/static/style.css"/>
-          </head>
-          <body>
-            <h1>Hello World</h1>
-          </body>
-        </html>
-        '''
-
+@app.route('/title/<title>')
+def title(title):
+    return render_template('index.html', title=title)
 
 @app.route('/hoge', methods=['POST'])
 def Hoge():
