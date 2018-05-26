@@ -1,13 +1,7 @@
-from flask import Flask, request
+from flask import Flask
 app = Flask(__name__)
 
 
-@app.route("/", methods=['POST'])
-def webhook():
-    print(request.header)
-    print("body: %s" % request.data)
-    return request.data
-
-
-if __name__ == "__main__":
-    app.run()
+@app.route('/')
+def hello_world():
+    return 'Hello World!' 
