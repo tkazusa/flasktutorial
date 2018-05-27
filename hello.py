@@ -1,4 +1,4 @@
-from flask import Flask, rrender_template
+from flask import Flask, request, render_template
 app = Flask(__name__)
 
 
@@ -16,9 +16,9 @@ def Hoge():
 def hoge():
     return 'hoge'
 
+
 @app.route('/search')
 def search():
     q = request.args.get('q', '') 
-    return 'hoge'
-
+    return q
 
