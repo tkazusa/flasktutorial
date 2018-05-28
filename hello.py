@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template
+from werkzeug.utils import secure_filename
 app = Flask(__name__)
 
 
@@ -26,9 +27,9 @@ def render_upload_form():
 def upload_file():
     if request.form['username'] and request.file['file']:
         f = request.file['file']
-        f.save('static/hoge.png')
+        filepath = 'static/' + secure_filename(f.filename)
+        f.save('filepath')
         return render_template('result.html',
-                               name=request.form['name'])
-
-
+                               name=request.form['name'],
+                               image_url=filepath)
 
