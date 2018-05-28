@@ -2,23 +2,17 @@ from flask import Flask, request, render_template
 app = Flask(__name__)
 
 
-@app.route('/title/<title>')
-def title(title):
-    return render_template('index.html', title=title)
+@app.route('/login', methods=['GET'])
+def render_form():
+    return render_template('login.html')
 
 
-@app.route('/hoge', methods=['POST'])
-def Hoge():
-    return 'Hoge'
-
-
-@app.route('/hoge', methods=['GET'])
-def hoge():
-    return 'hoge'
-
-
-@app.route('/search')
-def search():
-    q = request.args.get('q', '') 
-    return q
+@app.route('/login', methods=['POST'])
+def login():
+    if request.form['username'] and request.form['email']:
+        return render_template('check.html',
+                               email=request.form['email'],
+                               username=request.form['username'])
+    else:
+        return render_template('error.html')
 
