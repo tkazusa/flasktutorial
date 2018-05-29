@@ -15,12 +15,7 @@ def render_form():
 
 @app.route('/login', methods=['POST'])
 def login():
-    if request.form['username'] and request.form['email']:
-        return render_template('check.html',
-                               email=request.form['email'],
-                               username=request.form['username'])
-    else:
-        return render_template('error.html')
+    return render_template('error.html', l=["Hoge", "Fuga", "Foo"])
 
 
 @app.route('/upload', methods=['GET'])
