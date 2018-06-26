@@ -15,7 +15,7 @@ def render_form():
 
 @app.route('/login', methods=['POST'])
 def login():
-    return render_template('error.html', l=["Hoge", "Fuga", "Foo"])
+    return render_template('error.html')
 
 
 @app.route('/upload', methods=['GET'])
@@ -33,3 +33,5 @@ def upload_file():
                                name=request.form['name'],
                                image_url=filepath)
 
+if __name__ == "__main__":
+    app.run(debug=False, host="0.0.0.0", port=3000)
