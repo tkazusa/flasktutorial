@@ -25,13 +25,7 @@ def render_upload_form():
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
-    if request.form['username'] and request.file['file']:
-        f = request.file['file']
-        filepath = 'static/' + secure_filename(f.filename)
-        f.save('filepath')
-        return render_template('result.html',
-                               name=request.form['name'],
-                               image_url=filepath)
+    return render_template('result.html', name=request.form['name'])
 
 if __name__ == "__main__":
     app.run(debug=False, host="0.0.0.0", port=3000)
